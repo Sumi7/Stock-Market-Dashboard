@@ -10,7 +10,7 @@ const SearchBar = ({ fetchSymbol, fetchStocks }) => {
       console.log("event", e.target.value);
       const searchValue = (e.target.value).toUpperCase();
       fetchStocks(searchValue);
-      e.target.value = ""
+      e.target.value = "";
     }
   }
   const errorRender = () =>{
