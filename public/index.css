@@ -76,12 +76,12 @@
   .recent_stock_wrapper{
     white-space: nowrap;
     overflow: auto;
+    padding: 5px 5px 15px 5px;
   }
   .recent_item{
-    height: 100px;
+    height: 80px;
     margin: 5px;
-    background-color: #c1c1c1;
     display: inline-block;
-    width: 250px;
+    width: 200px;
   }
 }
