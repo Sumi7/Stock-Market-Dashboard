@@ -17,6 +17,7 @@ const Chart = ({ fetchStocks }) => {
         <XAxis tickMargin={20} dataKey="name" interval="preserveEnd" tick={false} reversed />
         <YAxis />
         <Tooltip labelStyle={{color: "#4f4f4f"}} itemStyle={{color: "#4f4f4f"}}/>
+        <Legend iconSize={20} />
         <Line type="natural" dataKey="value" strokeWidth={2} stroke="#d0d0d0" dot={false} />
       </LineChart>
     </ResponsiveContainer>

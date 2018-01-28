@@ -8,14 +8,15 @@ export default (state = initialState, action) => {
     case 'STORE_SYMBOL':
       return {
         recents: [action.payload.symbol, ...state.recents.filter( val =>{
-          if(val!=action.payload.symbol)
+          if( val!==action.payload.symbol )
             return val;
+          return null
           })
         ],
         diff: action.payload.diff,
         error: false
       };
-      
+
     case 'FETCHING_ERROR':
       return {...state, error: true};
 
