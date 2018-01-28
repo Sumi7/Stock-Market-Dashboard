@@ -4,15 +4,16 @@ import * as actions from '../actions/index';
 import { connect } from 'react-redux';
 import RecentStocks from './recentStocks';
 
-const SearchBar = ({ fetchSymbol, fetchSearch }) => {
+const SearchBar = ({ fetchSymbol, fetchStocks }) => {
   const onSearchHandler = (e) =>{
     if(e.target.value && e.key === 'Enter'){
       console.log("event", e.target.value);
       const searchValue = (e.target.value).toUpperCase();
-      fetchSearch(searchValue);
+      fetchStocks(searchValue);
+      e.target.value = ""
     }
   }
-  const errorRender = () =>{    
+  const errorRender = () =>{
     return (fetchSymbol.error ? <div className="error">Sorry No result found</div> : null);
   }
 

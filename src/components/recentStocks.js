@@ -7,7 +7,7 @@ const RecentStocks = ({fetchStocks, symbol})=>{
   const renderRecents = (symbol) => <div key = {symbol} className="recent_item" onClick = {()=>fetchStocks(symbol)}>{symbol}</div>
   return (
     <div className= "recent_stock_wrapper">
-      {symbol.data.map(renderRecents)}
+      {symbol.recents.map(renderRecents)}
     </div>
   );
 }
