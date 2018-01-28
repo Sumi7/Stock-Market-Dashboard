@@ -1,0 +1,87 @@
+.main_container{
+  display: flex;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  background-color: #4b4b4b;
+  min-height: 100vh;
+  color: #d0d0d0;
+}
+.sideBarContainer{
+  flex: 0.01 1 211px;
+  box-sizing: border-box;
+  background: #373737;
+  z-index: 1;
+}
+.sideBarContainer .error{
+  padding: 5px 10px;
+  text-align: center;
+  color: #e87777;
+}
+.SearchBar_wrapper{
+  padding: 5px;
+}
+.SearchBar_wrapper .ui.input input, .SearchBar_wrapper .ui.input input:focus{
+  height: 33px;
+  background-color: #808080;
+  color: #d0d0d0;
+  text-transform: uppercase;
+  border: 0;
+}
+.recent_stock_wrapper{
+  padding: 5px;
+}
+.recent_item {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  padding: 1vh;
+  border-bottom: 1px solid #4c4c4c;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+.main_area_wrapper{
+  flex: 1 2 590px;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #4b4b4b 5%, #373737 100%);
+  width: 100%;
+  min-width: 590px;
+  z-index: 2;
+}
+.dashboardHeader {
+  height: 8vh;
+  display: flex;
+  box-shadow: inset -1px -1px 10px #545454;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  font-size: 1.6em;
+}
+#chart{
+  height: 60vh;
+  padding: 10px;
+  margin: 20px 0;
+  background-color: transparent;
+}
+@media screen and (max-width: 800px) {
+  .sideBarContainer{
+    flex-grow: 1;
+    overflow: auto;
+  }
+  .main_area_wrapper{
+    margin-top: -15px;
+    padding-top: 15px;
+    min-width: unset;
+  }
+  .recent_stock_wrapper{
+    white-space: nowrap;
+    overflow: auto;
+  }
+  .recent_item{
+    height: 100px;
+    margin: 5px;
+    background-color: #c1c1c1;
+    display: inline-block;
+    width: 250px;
+  }
+}
