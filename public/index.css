@@ -38,6 +38,7 @@
   border-bottom: 1px solid #4c4c4c;
   font-size: 1.2em;
   text-transform: uppercase;
+  cursor: pointer;
 }
 .main_area_wrapper{
   flex: 1 2 590px;
@@ -62,6 +63,16 @@
   padding: 10px;
   margin: 20px 0;
   background-color: transparent;
+}
+.symbol_label{
+  flex: 1 1;
+}
+.diff_section{
+  display: flex;
+  flex: 1 1;
+  font-size: 0.7em;
+  align-items: center;
+  justify-content: flex-end;
 }
 @media screen and (max-width: 800px) {
   .sideBarContainer{

@@ -1,19 +1,17 @@
 const initialState = {
   recents:[],
-  diff:null,
   error: false
 }
 export default (state = initialState, action) => {
   switch(action.type){
     case 'STORE_SYMBOL':
       return {
-        recents: [action.payload.symbol, ...state.recents.filter( val =>{
-          if( val!==action.payload.symbol )
-            return val;
+        recents: [action.payload, ...state.recents.filter( val =>{
+          if( val.symbol !== action.payload.symbol )
+            return {symbol:val, diff: action.payload.diff};
           return null
           })
         ],
-        diff: action.payload.diff,
         error: false
       };
 

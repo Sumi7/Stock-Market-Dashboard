@@ -6,7 +6,6 @@ import SideBar from './sideBar';
 import StockChart from './stockChart';
 import 'semantic-ui-css/semantic.min.css';
 
-
 class App extends Component {
   componentDidMount(){
     this.props.fetchStocks();
@@ -17,9 +16,16 @@ class App extends Component {
       <div className = "main_container">
         <SideBar />
         <div className="main_area_wrapper">
+
           <div className="dashboardHeader">
             Dashboard
           </div>
+          {/* <div>
+            <StockDetails />
+          </div>
+          <div>
+            <ChartToggel />
+          </div> */}
           <div id="chart">
             <StockChart />
           </div>
