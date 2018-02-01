@@ -74,6 +74,18 @@
   align-items: center;
   justify-content: flex-end;
 }
+.toggle_button_wrapper{
+  padding: 10px 2vw 10px 3vw;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+}
+.toggle_button_wrapper .ui.button{  
+  margin: 5px .3vw;
+  background-color: #0000000a;
+  color: #d0d0d0;
+}
 @media screen and (max-width: 800px) {
   .sideBarContainer{
     flex-grow: 1;

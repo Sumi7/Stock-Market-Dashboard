@@ -9,7 +9,7 @@ const RecentStocks = ({fetchStocks, recentSymbol})=>{
       <div key = {symbol} className="recent_item" onClick = {()=>fetchStocks(symbol)}>
       <div className="symbol_label">{symbol}</div>
       <div className="diff_section">
-        {diff>0 ? <i class="small arrow up icon" style={{'color': '#77e8a4'}}></i> : <i class="small arrow up icon" style={{'color': '#e87777'}}></i> }
+        {diff>0 ? <i className="small arrow up icon" style={{'color': '#77e8a4'}}></i> : <i className="small arrow up icon" style={{'color': '#e87777'}}></i> }
         <div>{diff}</div>
       </div>
       </div>

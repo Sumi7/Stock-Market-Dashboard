@@ -20,15 +20,8 @@ class App extends Component {
           <div className="dashboardHeader">
             Dashboard
           </div>
-          {/* <div>
-            <StockDetails />
-          </div>
-          <div>
-            <ChartToggel />
-          </div> */}
-          <div id="chart">
-            <StockChart />
-          </div>
+
+          <StockChart />
         </div>
       </div>
     );
