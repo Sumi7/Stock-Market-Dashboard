@@ -11,17 +11,21 @@ class App extends Component {
     this.props.fetchStocks();
   }
   render(){
-    console.log(this.props)
     return (
-      <div className = "main_container">
-        <SideBar />
-        <div className="main_area_wrapper">
+      <div className="top">        
+        <div className="dashboardHeader show_mobile">
+          Dashboard
+        </div>
+        <div className = "main_container">
+          <SideBar />
+          <div className="main_area_wrapper">
 
-          <div className="dashboardHeader">
-            Dashboard
+            <div className="dashboardHeader hide_mobile">
+              Dashboard
+            </div>
+
+            <StockChart />
           </div>
-
-          <StockChart />
         </div>
       </div>
     );

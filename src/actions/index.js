@@ -1,18 +1,16 @@
 import axios from 'axios';
 
-const key = 'TCTXFPH56E4L8YT9'
+import { FETCH_SYMBOL, FETCHING_ERROR, FETCH_INTERVAL, FETCH_KEY, API_KEY } from './action_util'
 
-export const fetchStocks = ( SYMBOL='MSFT', FUNCTION='TIME_SERIES_DAILY' ) => dispatch => {
-  const url = `https://www.alphavantage.co/query?function=${FUNCTION}&symbol=${SYMBOL}&apikey=${key}`;
-  console.log("url",url)
+let data = []
+
+export const fetchStocks = ( SYMBOL='MSFT', FUNCTION='TIME_SERIES_DAILY') => dispatch => {
+  const url = `https://www.alphavantage.co/query?function=${FUNCTION}&symbol=${SYMBOL}&apikey=${API_KEY}`;
   axios.get(url).then(
     (res) => {
-      console.log("in res", res);
+      const refData = [];
       const symbol = res.data["Meta Data"]["2. Symbol"];
       const resData = res.data[Object.keys(res.data)[1]];
-      console.log(resData);
-      console.log("sym", symbol);
-      let data = [];
       for (var i in resData){
         const value = {
           name: i,
@@ -20,32 +18,44 @@ export const fetchStocks = ( SYMBOL='MSFT', FUNCTION='TIME_SERIES_DAILY' ) => di
           low: Number(resData[i]["3. low"]),
           volume: Number(resData[i]["5. volume"])
         };
-        data.push(value);
+        refData.push(value);
       };
-      const open = resData[Object.keys(resData)[0]]['1. open'];
-      const close = resData[Object.keys(resData)[1]]['1. open'];
-      const diff = (open-close).toFixed(3);
-      console.log("data from fetchStocks", data, close, diff);
+      data = refData;
+
       dispatch({
-        type: 'FETCH_STOCKS',
-        payload: data
-      });
-      dispatch({
-        type: 'STORE_SYMBOL',
-        payload: { symbol, diff }
+        type: FETCH_SYMBOL,
+        payload: {
+          symbol:{
+            name: symbol,
+            data: data
+          },
+          dataKey: "high",
+        }
       });
     }
   ).catch(err =>{
     dispatch({
-      type: 'FETCHING_ERROR',
+      type: FETCHING_ERROR,
       err: err
     });
   });
 }
 
-// export const switchData = ( data ) => dispatch => {
-//   dispatch({
-//     type: 'FETCH_STOCKS',
-//     payload: data
-//   });
-// }
+export const switchData = ( interval) => dispatch => {
+  const newData = data.slice(0, interval);
+
+  dispatch({
+    type: FETCH_INTERVAL,
+    payload: {
+      data: newData
+    }
+  });
+}
+export const switchKey = ( key ) => dispatch => {
+  dispatch({
+    type: FETCH_KEY,
+    payload: {
+      dataKey: key
+    }
+  });
+}

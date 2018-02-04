@@ -6,14 +6,13 @@ import RecentStocks from './recentStocks';
 const SearchBar = ({ fetchSymbol, fetchStocks }) => {
   const onSearchHandler = (e) =>{
     if(e.target.value && e.key === 'Enter'){
-      console.log("event", e.target.value);
       const searchValue = (e.target.value).toUpperCase();
       fetchStocks(searchValue);
       e.target.value = "";
     }
   }
   const errorRender = () =>{
-    return (fetchSymbol.error ? <div className="error">Sorry No result found</div> : null);
+    return (fetchSymbol.error ? <div className="error red">Sorry No result found</div> : null);
   }
 
 
@@ -36,7 +35,6 @@ const SearchBar = ({ fetchSymbol, fetchStocks }) => {
 }
 
 const mapStateToProps = ({fetchSymbol}) =>{
-  console.log("sideBAr", fetchSymbol)
   return { fetchSymbol }
 }
 

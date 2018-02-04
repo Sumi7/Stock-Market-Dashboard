@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-const Chart = ({data, dataKey}) => {
-  console.log("fetchStocks, dataKey CHART", data, dataKey);
+const Chart = ({chartData:{recents, dataKey}}) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={data}
+      <LineChart data={recents[0].data}
         margin={{ top: 5, right: 20, left: -20, bottom: 5 }}>
         <CartesianGrid strokeDasharray="0" stroke="#7f7f7f" vertical ={false}/>
         <XAxis tickMargin={20} dataKey="name"  domain={[0, 'dataMax']} tick={false} reversed />
@@ -19,8 +18,8 @@ const Chart = ({data, dataKey}) => {
   );
 }
 
-const mapStateToProps = ({ fetchStocks }) =>{
-  return { data: fetchStocks }
+const mapStateToProps = ({ fetchSymbol }) =>{
+  return { chartData: fetchSymbol }
 }
 
 export default connect(mapStateToProps)(Chart);

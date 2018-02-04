@@ -1,3 +1,17 @@
+body{
+  color: #d0d0d0!important;
+  background: #373737!important;
+  font-size: 15px!important;
+}
+.red{
+  color: #e87777
+}
+.green{
+  color: #77e8a4
+}
+.blue{
+  color: #8e8eff
+}
 .main_container{
   display: flex;
   box-sizing: border-box;
@@ -11,11 +25,11 @@
   box-sizing: border-box;
   background: #373737;
   z-index: 1;
+  padding: 5px 0;
 }
 .sideBarContainer .error{
   padding: 5px 10px;
   text-align: center;
-  color: #e87777;
 }
 .SearchBar_wrapper{
   padding: 5px;
@@ -29,6 +43,10 @@
 }
 .recent_stock_wrapper{
   padding: 5px;
+  position: sticky;
+  overflow-y: scroll;
+  height: 100vh;
+  margin-right: -10px;
 }
 .recent_item {
   height: 10vh;
@@ -36,9 +54,37 @@
   align-items: center;
   padding: 1vh;
   border-bottom: 1px solid #4c4c4c;
-  font-size: 1.2em;
+  font-size: 1.6em;
   text-transform: uppercase;
   cursor: pointer;
+  line-height: 1;
+}
+#stockChart{
+  margin: 2vh 0;
+}
+.stock_details_wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px 3vw;
+  margin: 1vh 0 2vh 0;
+}
+.stock_details_wrapper .stock_Symbol{
+  font-size: 5em;
+  line-height: 1;
+  flex: 1 1;
+}
+.stock_details_wrapper .details{
+  flex: 0 1;
+  padding: 0 2vw;
+}
+.stock_details_wrapper .details div:nth-child(1){
+  margin-left: 10px;
+  font-size: 1.9em;
+}
+.stock_details_wrapper .details div:nth-child(2){
+  font-weight: bold;
+  font-size: 1.4em;
 }
 .main_area_wrapper{
   flex: 1 2 590px;
@@ -58,10 +104,12 @@
   box-sizing: border-box;
   font-size: 1.6em;
 }
+.dashboardHeader.show_mobile{
+  display: none;
+}
 #chart{
   height: 60vh;
-  padding: 10px;
-  margin: 20px 0;
+  padding: 0 10px;
   background-color: transparent;
 }
 .symbol_label{
@@ -81,30 +129,64 @@
   align-items: center;
   justify-content: space-between;
 }
-.toggle_button_wrapper .ui.button{  
+.toggle_button_wrapper .ui.button{
   margin: 5px .3vw;
   background-color: #0000000a;
   color: #d0d0d0;
+  font-size: 1em;
+}
+.toggle_button_wrapper .ui.input input[type="date"]{
+  background-color: #0000000a;
+  border: none;
+  margin: 0 5px;
+  color: #d0d0d0;
+  font-weight: 800;
+}
+@media screen and (max-width: 1024px) {
+  body{
+    font-size: 12px!important;
+  }
 }
 @media screen and (max-width: 800px) {
+  .dashboardHeader.show_mobile{
+    display: flex;
+  }
+  .dashboardHeader.hide_mobile{
+    display: none;
+  }
   .sideBarContainer{
     flex-grow: 1;
     overflow: auto;
   }
   .main_area_wrapper{
-    margin-top: -15px;
-    padding-top: 15px;
+    margin-top: -20px;
+    padding-top: 1.5vh;
     min-width: unset;
   }
   .recent_stock_wrapper{
     white-space: nowrap;
     overflow: auto;
-    padding: 5px 5px 15px 5px;
+    padding: 5px;
+    position: unset;
+    height: unset;
+    margin: 0;
+  }
+  .recent_item_wrapper{
+    display: inline-block;
   }
   .recent_item{
-    height: 80px;
+    height: 65px;
     margin: 5px;
-    display: inline-block;
-    width: 200px;
+    width: 27vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  body{
+    font-size: 10px!important;
+  }
+}
+@media screen and (max-width: 650px) {
+  body{
+    font-size: 7px!important;
   }
 }
